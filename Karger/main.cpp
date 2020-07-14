@@ -69,8 +69,9 @@ int main(){
     //nodes vector is the output over 20 trials of Karger's algorithm
     vector<int> nodes;
     cout << "Compiling min cut..." << endl;
-    while(count < 20){
-        unordered_map<int, vector<int>> G;
+
+    //load graph into map G from text file
+    unordered_map<int, vector<int>> G;
         ifstream file("mincut.txt");
         string str;
         while (getline(file, str))
@@ -86,16 +87,19 @@ int main(){
             vector<int> nodes(res.begin()+1, res.end());
             G[res[0]] = nodes;      
         }
-    
+
+
+    while(count < 20){
+        unordered_map<int, vector<int>> Graph = G;
         
     
-        while(G.size() > 2){
-            pair<int,int> verts = randomEdge(G);
-            merge(verts, G);
+        while(Graph.size() > 2){
+            pair<int,int> verts = randomEdge(Graph);
+            merge(verts, Graph);
         }
         
         //get min size of vector in G
-        for(auto i: G){
+        for(auto i: Graph){
             nodes.push_back(i.second.size());
             break;
         }
