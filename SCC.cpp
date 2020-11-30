@@ -2,7 +2,7 @@
 using namespace std;
 
 //To use the SCC.txt file used in main() download it from:  http://algorithmsilluminated.org/datasets/problem8.10.txt
-//This program will return the top 5 strongly connected componments in descending order.
+//This program will return the top 5 largest strongly connected components.
 
 vector<int> sizes;
 vector<int> buildGraph(unordered_map<int, vector<int>>& adjList, ifstream& file){
